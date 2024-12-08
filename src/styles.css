@@ -1,4 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto; /* Scroll en el layout */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que ocupe toda la altura */
+}
+
+.content {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: auto; /* Si el contenido es demasiado alto, el scroll será aquí */
+}

@@ -4,14 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { SearchPageComponent } from './search/pages/search-page/search-page.component';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SearchModule
   ],
   providers: [
     provideAnimationsAsync()
