@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SearchPageComponent } from './search/pages/search-page/search-page.component';
 import { SearchModule } from './search/search.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { SearchModule } from './search/search.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SearchModule
+    SearchModule,
+    HttpClientModule
+
   ],
   providers: [
     provideAnimationsAsync()

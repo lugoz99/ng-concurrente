@@ -18,3 +18,5 @@ app-root {
   gap: 16px;
   overflow: auto; /* Si el contenido es demasiado alto, el scroll será aquí */
 }
+
+
