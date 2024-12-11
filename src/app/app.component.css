@@ -1,0 +1,14 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Evita que el body tenga scroll */
+}
+
+.app-scroll-container {
+  height: 100vh; /* Ocupa toda la ventana */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: hidden; /* Oculta el scroll horizontal si es necesario */
+  scroll-behavior: smooth; /* Scroll suave */
+}

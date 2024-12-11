@@ -1,0 +1,84 @@
+/* Contenedor de la tabla */
+.table-container {
+  max-width: 100%; /* Ancho máximo de la tabla */
+  overflow-x: auto; /* Scroll horizontal si es necesario */
+  background-color: #fff; /* Fondo blanco */
+  border: 1px solid #ddd; /* Borde general para la tabla */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 8px; /* Espaciado interno para separar la tabla del borde */
+}
+
+/* Estilo para el header (cabeceras de la tabla) */
+.mat-header-cell {
+  font-size: 16px; /* Aumenta el tamaño del texto */
+  font-weight: bold; /* Hace el texto más grueso */
+  text-align: center; /* Centra el texto */
+  vertical-align: middle; /* Alinea verticalmente en el medio */
+  background-color: #f5f5f5; /* Fondo del header */
+  border-bottom: 2px solid #ddd; /* Borde inferior del header */
+  padding: 12px; /* Espaciado interno */
+  border-right: 1px solid #ddd; /* Línea vertical entre columnas */
+  text-overflow: ellipsis; /* Truncar texto */
+  white-space: nowrap; /* Evitar saltos de línea */
+  overflow: hidden; /* Ocultar texto que se desborda */
+}
+
+/* Estilo para las celdas de datos */
+.mat-cell {
+  text-align: center; /* Centra el texto */
+  vertical-align: middle; /* Alinea verticalmente al centro */
+  padding: 8px; /* Espaciado interno */
+  border-right: 1px solid #ddd; /* Línea vertical entre columnas */
+  text-overflow: ellipsis; /* Truncar texto */
+  white-space: nowrap; /* Evitar saltos de línea */
+  overflow: hidden; /* Ocultar texto desbordado */
+}
+
+/* Estilo para las filas */
+.mat-row {
+  display: table-row; /* Garantiza la alineación correcta */
+  border-bottom: 1px solid #ddd; /* Línea horizontal entre filas */
+}
+
+/* Última celda de cada fila (sin borde derecho) */
+.mat-row .mat-cell:last-child,
+.mat-header-row .mat-header-cell:last-child {
+  border-right: none;
+}
+
+/* Líneas verticales en la tabla */
+.mat-header-cell,
+.mat-cell {
+  border-right: 1px solid #ddd; /* Línea vertical entre columnas */
+  text-align: center; /* Centrar texto */
+  vertical-align: middle; /* Alinear verticalmente */
+  padding: 8px; /* Espaciado interno */
+}
+
+/* Remover borde en la última columna */
+.mat-header-row .mat-header-cell:last-child,
+.mat-row .mat-cell:last-child {
+  border-right: none;
+}
+
+/* Estilo para filas (líneas horizontales) */
+.mat-row {
+  border-bottom: 1px solid #ddd; /* Línea horizontal entre filas */
+}
+
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-icon {
+  color: white; /* Asegúrate de que el ícono sea visible */
+}
+
+.mat-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -13,11 +13,13 @@ export interface Variant {
   output_CS?: { [key: string]: string }; // Agrupa campos dinámicos CS
 }
 
+
+
 export interface VariantResponse {
-  variants: Variant[]; // Lista de variantes
-  total_count: number; // Total de elementos
-  current_page: number; // Página actual
-  page_size: number; // Tamaño de página
-  total_pages: number; // Total de páginas
-  next_page: number | null; // Siguiente página (si existe)
+  variants: Variant[]; // Lista de variantes recuperadas
+  last_id: string | null; // Último ID recuperado en la página
+  documents_retrieved: number; // Número de documentos recuperados en esta solicitud
+  total_documents: number; // Total de documentos en la colección
+  page_size: number; // Tamaño de la página solicitada
+  duration_seconds: number; // Duración de la solicitud en segundos
 }

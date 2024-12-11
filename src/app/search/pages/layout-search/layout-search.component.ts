@@ -17,10 +17,9 @@ export class LayoutSearchComponent implements OnInit {
   searchValue = ''; // Valor a buscar
 
   // Información de paginación
-  totalCount = 0;
-  pageSize = 100;
-  currentPage = 1;
-  totalPages = 0;
+  totalDocuments = 0;
+  pageSize = 1000;
+  lastId: string | null = null; // Último ID recuperado
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -33,11 +32,12 @@ export class LayoutSearchComponent implements OnInit {
 
   fetchVariants(): void {
     // Llama al servicio con los parámetros de paginación
-    this.variantService.getAllVariants(this.currentPage, this.pageSize).subscribe({
+    this.variantService.getAllVariants(this.lastId, this.pageSize).subscribe({
       next: (response: VariantResponse) => {
         this.dataSource.data = response.variants; // Carga las variantes en la tabla
         this.displayedColumns = this.getDynamicColumns(response.variants); // Genera las columnas dinámicas
-        this.totalCount = response.total_count; // Total de registros
+        this.totalDocuments = response.total_documents; // Total de documentos
+        this.lastId = response.last_id; // Último ID para la siguiente página
       },
       error: (error) => {
         console.error('Error fetching data:', error);
@@ -59,15 +59,34 @@ export class LayoutSearchComponent implements OnInit {
     );
   }
 
-
   applyFilter(): void {
     this.dataSource.filter = this.searchValue.trim().toLowerCase();
   }
 
   onPageChange(event: PageEvent): void {
-    // Actualiza los parámetros de paginación
-    this.currentPage = event.pageIndex + 1; // Ajusta el índice de la página (Angular Material usa base 0)
+    // Actualiza el tamaño de la página
     this.pageSize = event.pageSize;
+
+    // Reinicia la paginación si el usuario cambia el tamaño de página
+    if (event.pageIndex === 0) {
+      this.lastId = null;
+    }
+
     this.fetchVariants(); // Solicita la nueva página al backend
+  }
+
+  viewProfile() {
+    console.log('Abrir perfil...');
+    // Lógica para abrir el perfil
+  }
+
+  viewSettings() {
+    console.log('Abrir configuración...');
+    // Lógica para abrir configuración
+  }
+
+  logout() {
+    console.log('Cerrar sesión...');
+    // Lógica para cerrar sesión
   }
 }
