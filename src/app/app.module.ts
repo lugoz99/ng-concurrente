@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SearchPageComponent } from './search/pages/search-page/search-page.component';
 import { SearchModule } from './search/search.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SearchModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule,
 
   ],
   providers: [

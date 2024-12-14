@@ -1,0 +1,41 @@
+<div class="split-container">
+  <!-- Sección izquierda: Mensaje de bienvenida -->
+  <div class="left-section">
+    <div class="welcome-message">
+      <h1>Únete a nosotros</h1>
+      <p>Crea una cuenta para explorar nuestro portal de vinos y uvas.</p>
+    </div>
+  </div>
+
+  <!-- Sección derecha: Formulario de registro -->
+  <div class="right-section">
+    <mat-card class="register-card">
+      <mat-card-title>Registro</mat-card-title>
+      <mat-card-content>
+        <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
+        <form>
+          <!-- Campo de username -->
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Nombre de Usuario</mat-label>
+            <input matInput formControlName="username" type="text" />
+          </mat-form-field>
+
+          <!-- Campo de correo -->
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email" type="email" />
+          </mat-form-field>
+
+          <!-- Botón de registro -->
+          <!-- <button mat-raised-button class="register-button" [disabled]="!registerForm.valid"> -->
+          <button  class="register-button">
+            Registrarse
+          </button>
+        </form>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <a routerLink="/login" class="login-link">¿Ya tienes una cuenta? Inicia sesión aquí</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
