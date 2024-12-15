@@ -1,4 +1,3 @@
-/* Contenedor principal dividido */
 .split-container {
   display: flex;
   height: 100vh;
@@ -45,66 +44,3 @@
   padding: 40px;
 }
 
-/* Tarjeta de login */
-.login-card {
-  width: 100%;
-  max-width: 500px;
-  padding: 40px;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  background-color: #ffffff;
-}
-
-/* Título del login */
-mat-card-title {
-  font-size: 28px;
-  color: #1e88e5; /* Azul brillante */
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-/* Campos del formulario */
-.form-field {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-mat-form-field.mat-form-field {
-  background-color: #e8f0fe;
-  border-radius: 4px;
-}
-
-/* Botón de inicio de sesión */
-.login-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #1e88e5; /* Azul principal */
-  color: #ffffff; /* Texto blanco */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-  background-color: #1565c0; /* Azul más oscuro para hover */
-}
-
-/* Acciones de la tarjeta */
-.card-actions {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.register-link {
-  font-size: 14px;
-  color: #1e88e5; /* Azul */
-  text-decoration: none;
-}
-
-.register-link:hover {
-  text-decoration: underline;
-}

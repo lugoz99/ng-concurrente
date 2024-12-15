@@ -19,4 +19,12 @@ app-root {
   overflow: auto; /* Si el contenido es demasiado alto, el scroll será aquí */
 }
 
+.snackbar-exito {
+  background-color: #4caf50; /* Verde éxito */
+  color: #fff;
+}
 
+.snackbar-error {
+  background-color: #f44336; /* Rojo error */
+  color: #fff;
+}

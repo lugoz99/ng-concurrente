@@ -1,1 +1,46 @@
-<p>login works!</p>
+<mat-card class="login-card">
+  <!-- Título del formulario -->
+  <mat-card-title>Iniciar Sesión</mat-card-title>
+  <mat-card-content>
+    <!-- Formulario Reactivo -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Campo de correo -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="email" type="text" />
+        <!-- Mensajes de error para el correo -->
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+          Ingresa un correo válido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Campo de contraseña -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" />
+        <!-- Mensajes de error para la contraseña -->
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+          La contraseña debe tener al menos 4 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Botón de Login -->
+      <button mat-raised-button color="primary" class="login-button" [disabled]="!loginForm.valid">
+        Ingresar
+      </button>
+    </form>
+  </mat-card-content>
+
+  <!-- Enlace para registro -->
+  <mat-card-actions class="card-actions">
+    <a routerLink="/auth/register" class="register-link">
+      ¿No tienes una cuenta? Regístrate aquí
+    </a>
+  </mat-card-actions>
+</mat-card>

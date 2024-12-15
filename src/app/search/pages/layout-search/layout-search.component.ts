@@ -15,43 +15,73 @@ export class LayoutSearchComponent implements OnInit {
   dataSource = new MatTableDataSource<Variant>();
   selectedColumn = ''; // Columna seleccionada para búsqueda
   searchValue = ''; // Valor a buscar
-
-  // Información de paginación
-  totalDocuments = 0;
-  pageSize = 1000;
-  lastId: string | null = null; // Último ID recuperado
+  totalDocuments = 0; // Total de documentos en la base de datos
+  pageSize = 20; // Tamaño de la página inicial
+  lastId: string | null = null; // Último ID para paginación
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private variantService: SearchService) { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
-    this.fetchVariants();
+    // Cargar datos iniciales al cargar el componente
+    this.getAllVariants();
   }
 
-  fetchVariants(): void {
-    // Llama al servicio con los parámetros de paginación
-    this.variantService.getAllVariants(this.lastId, this.pageSize).subscribe({
-      next: (response: VariantResponse) => {
-        this.dataSource.data = response.variants; // Carga las variantes en la tabla
-        this.displayedColumns = this.getDynamicColumns(response.variants); // Genera las columnas dinámicas
-        this.totalDocuments = response.total_documents; // Total de documentos
-        this.lastId = response.last_id; // Último ID para la siguiente página
-      },
-      error: (error) => {
-        console.error('Error fetching data:', error);
-      },
-    });
+  /**
+   * Carga inicial de todas las variantes sin filtros
+   */
+  getAllVariants(): void {
+    this.searchService
+      .getAllVariants(this.lastId, this.pageSize)
+      .subscribe({
+        next: (response: VariantResponse) => {
+          this.dataSource.data = response.variants;
+          this.totalDocuments = response.total_documents;
+          this.lastId = response.last_id || null;
+          this.displayedColumns = this.getDynamicColumns(response.variants);
+        },
+        error: (error) => {
+          console.error('Error fetching all variants:', error);
+        },
+      });
   }
 
+  /**
+   * Obtiene variantes filtradas por columna y valor
+   */
+  getBulkVariants(): void {
+    if (!this.selectedColumn || !this.searchValue) {
+      console.error('Debes seleccionar una columna y un valor para buscar.');
+      return;
+    }
+
+    this.searchService
+      .getBulkVariants(this.selectedColumn, this.searchValue, this.lastId, this.pageSize)
+      .subscribe({
+        next: (response: VariantResponse) => {
+          console.log('Bulk variants response:', response);
+          this.dataSource.data = response.variants;
+          this.totalDocuments = response.total_documents;
+          this.lastId = response.last_id || null;
+          this.displayedColumns = this.getDynamicColumns(response.variants);
+        },
+        error: (error) => {
+          console.error('Error fetching bulk variants:', error);
+        },
+      });
+  }
+
+  /**
+   * Genera las columnas dinámicamente según los datos
+   */
   getDynamicColumns(data: Variant[]): string[] {
-    // Genera las columnas dinámicas y excluye '_id'
     return Array.from(
       data.reduce((columns, item) => {
         Object.keys(item).forEach((key) => {
           if (key !== '_id') {
-            columns.add(key); // Solo agrega claves que no sean '_id'
+            columns.add(key);
           }
         });
         return columns;
@@ -59,34 +89,55 @@ export class LayoutSearchComponent implements OnInit {
     );
   }
 
+  /**
+   * Aplica filtros y usa getBulkVariants
+   */
   applyFilter(): void {
-    this.dataSource.filter = this.searchValue.trim().toLowerCase();
-  }
-
-  onPageChange(event: PageEvent): void {
-    // Actualiza el tamaño de la página
-    this.pageSize = event.pageSize;
-
-    // Reinicia la paginación si el usuario cambia el tamaño de página
-    if (event.pageIndex === 0) {
-      this.lastId = null;
+    console.log('Filtros aplicados:', { selectedColumn: this.selectedColumn, searchValue: this.searchValue });
+    this.selectedColumn = this.selectedColumn.trim();
+    this.searchValue = this.searchValue.trim();
+    if (!this.selectedColumn || !this.searchValue) {
+      console.error('Debes seleccionar una columna y escribir un valor para buscar.');
+      return;
     }
 
-    this.fetchVariants(); // Solicita la nueva página al backend
+    this.lastId = null; // Reiniciar la lógica de paginación en el backend
+    this.paginator.firstPage(); // Regresar el paginador a la primera página
+    this.getBulkVariants(); // Realizar la búsqueda
   }
 
+
+  /**
+   * Maneja los cambios en el paginador
+   */
+  onPageChange(event: PageEvent): void {
+    this.pageSize = event.pageSize; // Actualizar tamaño de página
+    if (event.pageIndex === 0) {
+      this.lastId = null; // Reiniciar paginación si es la primera página
+    }
+    // Decidir si se usa getAll o getBulk según si hay filtros
+    if (this.selectedColumn && this.searchValue) {
+      this.getBulkVariants();
+    } else {
+      this.getAllVariants();
+    }
+  }
+
+  /**
+   * Métodos para manejar acciones del menú de usuario
+   */
   viewProfile() {
     console.log('Abrir perfil...');
-    // Lógica para abrir el perfil
+    // Agregar lógica para abrir el perfil del usuario
   }
 
   viewSettings() {
     console.log('Abrir configuración...');
-    // Lógica para abrir configuración
+    // Agregar lógica para abrir las configuraciones del usuario
   }
 
   logout() {
     console.log('Cerrar sesión...');
-    // Lógica para cerrar sesión
+    // Agregar lógica para cerrar sesión
   }
 }

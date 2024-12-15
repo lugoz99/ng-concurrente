@@ -6,6 +6,7 @@ import { LayoutAuthComponent } from './pages/layout-auth/layout-auth.component';
 import { MaterialModule } from '../material/material.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LoginComponent } from './pages/login/login.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports:[LayoutAuthComponent,RegisterComponent]
 })

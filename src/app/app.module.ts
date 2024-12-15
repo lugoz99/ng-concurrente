@@ -8,6 +8,8 @@ import { SearchPageComponent } from './search/pages/search-page/search-page.comp
 import { SearchModule } from './search/search.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import { MaterialModule } from './material/material.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,6 @@ import { AuthModule } from './auth/auth.module';
     SearchModule,
     HttpClientModule,
     AuthModule,
-
   ],
   providers: [
     provideAnimationsAsync()
