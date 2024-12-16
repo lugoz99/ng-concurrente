@@ -19,9 +19,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   exports: [
+    MatSortModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,

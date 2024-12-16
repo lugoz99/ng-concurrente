@@ -162,3 +162,57 @@
   align-items: center;
   gap: 10px;
 }
+
+.mat-header-cell {
+  cursor: pointer;
+}
+
+.mat-sort-header-container {
+  align-items: center;
+}
+
+
+/* estilos.css */
+.custom-button {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    padding: 1.8em;
+}
+
+
+.flex-container {
+  display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 60px; /* Opcional: Hace que el contenedor ocupe toda la altura */
+  margin-bottom: 1.3rem; /* Espaciado inferior */
+}
+
+/* Contenedor principal */
+.svg-container {
+  display: flex;
+  justify-content: center;
+  /* Centrar horizontalmente */
+  align-items: center;
+  /* Centrar verticalmente */
+  /* Altura completa de la ventana */
+  /* Fondo claro para contraste */
+  height: 100%;
+  width: 60px;
+  width: 60px;
+    /* Tamaño total del círculo */
+    height: 60px;
+    /* Tamaño total del círculo */
+    border-radius: 50%;
+    /* Hace el contenedor circular */
+}
+
+/* Opcional: Estilos adicionales para el SVG */
+.svg-container svg {
+  width: 40px;
+  /* Ancho del SVG */
+  height: 40px;
+  /* Alto del SVG */
+  /* Color púrpura personalizado */
+}

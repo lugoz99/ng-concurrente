@@ -23,3 +23,12 @@ export interface VariantResponse {
   page_size: number; // Tamaño de la página solicitada
   duration_seconds: number; // Duración de la solicitud en segundos
 }
+
+
+export interface VariantSort {
+  [key: string]: any; // Permite el acceso dinámico
+  CHROM?: string;
+  FILTER?: string;
+  INFO?: string;
+  FORMAT?: string;
+}
