@@ -22,6 +22,7 @@ export interface VariantResponse {
   total_documents: number; // Total de documentos en la colección
   page_size: number; // Tamaño de la página solicitada
   duration_seconds: number; // Duración de la solicitud en segundos
+
 }
 
 

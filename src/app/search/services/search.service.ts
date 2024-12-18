@@ -31,7 +31,7 @@ export class SearchService {
     let params = new HttpParams();
 
     // Limpieza del valor de pageSize para evitar caracteres inválidos
-    const cleanPageSize = parseInt(pageSize.toString().replace(/[^0-9]/g, ''),20);
+    const cleanPageSize = parseInt(pageSize.toString().replace(/[^0-9]/g, ''), 20);
 
     if (isNaN(cleanPageSize) || cleanPageSize <= 0) {
       console.error('Invalid pageSize value after cleaning:', pageSize);
