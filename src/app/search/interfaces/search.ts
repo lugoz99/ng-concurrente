@@ -1,3 +1,4 @@
+// Interfaces de respuesta de la API de búsqueda de variantes
 export interface Variant {
   _id: string;
   CHROM: string;
